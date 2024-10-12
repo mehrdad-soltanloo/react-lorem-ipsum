@@ -9,21 +9,27 @@ const App = () => {
     let amount = parseInt(count);
     setText(data.slice(0, amount));
   };
-
+  const handleChange = (e) => {
+    const value = e.target.value;
+    if (value === "") {
+      return setCount(1);
+    } else {
+      setCount(value);
+    }
+  };
   return (
-    <section className="section-center" onSubmit={handleSubmit}>
-      <h4>tired of boring lorem ipsum?</h4>
-      <form className="lorem-form">
-        <label htmlFor="amount">paragraphs:</label>
+    <section className="section-center">
+      <h4>10 javascript facts</h4>
+      <form className="lorem-form" onSubmit={handleSubmit}>
+        <label htmlFor="amount">paragraphs: </label>
         <input
           type="number"
           name="amount"
           id="amount"
           min="1"
-          step="1"
-          max="8"
+          max="10"
           value={count}
-          onChange={(e) => setCount(e.target.value)}
+          onChange={handleChange}
         />
         <button type="submit" className="btn">
           generate
